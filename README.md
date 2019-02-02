@@ -8,13 +8,15 @@
 </head>
 
 <body class="stackedit">
-  <div class="stackedit__html"><h1 id="bot-telegram-python">Bot-Telegram-Python</h1>
-<h2 id="fonctionnalités">Fonctionnalités</h2>
+  <div class="stackedit__html"><h1 id="bot-telegram-raspberry">Bot-Telegram-Raspberry</h1>
+<h1 id="fonctionnalités">Fonctionnalités</h1>
 <ul>
-<li>Utilisation de python</li>
+<li>Interagir avec son Raspberry Pi à distance et facilement avec l’application Telegram</li>
+<li>Obtenir des informations à travers Telegram comme l’adresse IP publique du Raspberry Pi afin d’établir des connexions (SSH, FTP, HTTPS) à distance</li>
+<li>Utilisation de python, de l’API Telegram et de l’API … pour la météo</li>
 </ul>
-<h1 id="exemple1">Exemple1</h1>
-<h1 id="exemple-2">Exemple 2</h1>
+<h1 id="installation">Installation</h1>
+<h1 id="utilisation">Utilisation</h1>
 </div>
 </body>
 
