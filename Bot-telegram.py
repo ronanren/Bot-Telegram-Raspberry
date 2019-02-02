@@ -15,7 +15,7 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 
 logger = logging.getLogger(__name__)
 
-GENDER, PHOTO = range(2)
+MAIN = 0
 
 
 def start(bot, update):
@@ -25,10 +25,10 @@ def start(bot, update):
         'Hi!',
         reply_markup=ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True))
 
-    return GENDER
+    return MAIN
 
 
-def gender(bot, update):
+def main(bot, update):
     user = update.message.from_user
     logger.info("Message of %s: %s", user.first_name, update.message.text)
 
@@ -56,7 +56,7 @@ def gender(bot, update):
         return ConversationHandler.END
 
 
-    return GENDER
+    return MAIN
 
 
 
@@ -82,7 +82,7 @@ conv_handler = ConversationHandler(
     entry_points=[CommandHandler('start', start)],
 
     states={
-            GENDER: [RegexHandler('^(Ip|Meteo|Stop)$', gender)],
+            MAIN: [RegexHandler('^(Ip|Meteo|Stop)$', main)],
         },
 
     fallbacks=[CommandHandler('stop', stop)]
