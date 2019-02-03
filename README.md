@@ -16,7 +16,15 @@
 <li>Utilisation de python, de l’API Telegram et de l’API OpenWeatherMap pour la météo</li>
 </ul>
 <h1 id="installation">Installation</h1>
+<p>Vous devez installer l’API pour communiquer avec Telegram :</p>
+<p><code>$ pip install python-telegram-bot</code></p>
+<p>Vous devez aussi créer votre BOT avec <code>BotFather</code> sur Telegram afin d’obtenir la clé d’API à renseigner dans le script</p>
 <h1 id="utilisation">Utilisation</h1>
+<p>Pour que le script soit lancé dès le demarage du Raspberry Pi :</p>
+<pre><code>sudo nano /etc/rc.local
+</code></pre>
+<p>puis ajouter cette ligne <code>python "chemin du Bot-telegram.py &amp;</code></p>
+<p>ou sinon exécuter  le script simplement en Python 2.7</p>
 </div>
 </body>
 
