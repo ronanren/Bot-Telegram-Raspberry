@@ -4,10 +4,10 @@ from telegram import (ReplyKeyboardMarkup, ReplyKeyboardRemove)
 from telegram.ext import (Updater, CommandHandler, MessageHandler, Filters, RegexHandler,
                           ConversationHandler)
 
-import logging, requests, socket
+import logging, requests, socket, subprocess
 import unicodedata
 
-token = "token"
+token = "Token"
 
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -45,7 +45,10 @@ def main(bot, update):
 
     if update.message.text == "Temp":
         
-        message = os.system("vcgencmd measure_temp")
+        message = str(subprocess.check_output("vcgencmd measure_temp", shell=True))
+        message = message.replace("b","")
+        message = message.replace('"','')
+        message = message[0:1]
         update.message.reply_text(message)
 
     if update.message.text == "Stop":
