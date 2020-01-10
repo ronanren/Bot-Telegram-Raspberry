@@ -4,10 +4,10 @@ from telegram import (ReplyKeyboardMarkup, ReplyKeyboardRemove)
 from telegram.ext import (Updater, CommandHandler, MessageHandler, Filters, RegexHandler,
                           ConversationHandler)
 
-import logging, requests
+import logging, requests, socket
 import unicodedata
 
-token = "Token"
+token = "token"
 
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -19,7 +19,7 @@ MAIN = 0
 
 
 def start(bot, update):
-    reply_keyboard = [['Ip', 'Meteo', 'Stop']]
+    reply_keyboard = [['Ip', 'Temp', 'Stop']]
 
     update.message.reply_text(
         'Hi!',
@@ -34,23 +34,24 @@ def main(bot, update):
 
 
     if update.message.text == "Ip":
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        s.connect(("8.8.8.8", 80))
+        private = s.getsockname()[0]
+        s.close()
         ip = requests.get('https://api.ipify.org').text
-        message = "The public IP address of Raspberry Pi is : " + str(ip)
+        message = "Public IP : " + str(ip) + "\nPrivate IP : " + str(private)
         update.message.reply_text(message)
 
 
-    if update.message.text == "Meteo":
-        r = requests.get('https://api.openweathermap.org/data/2.5/weather?q=Rennes,fr&APPID=Token')
-        data = r.json()
-        temp = data['main']['temp']
-        celsius = float(temp) - 273.15
-        message = "Rennes : " + str(round(celsius)) + "°C"
+    if update.message.text == "Temp":
+        
+        message = os.system("vcgencmd measure_temp")
         update.message.reply_text(message)
 
     if update.message.text == "Stop":
         user = update.message.from_user
         logger.info("User %s canceled the conversation.", user.first_name)
-        update.message.reply_text('Bye! I hope we can talk again some day.',
+        update.message.reply_text('Bye!',
                                   reply_markup=ReplyKeyboardRemove())
 
         return ConversationHandler.END
@@ -63,7 +64,7 @@ def main(bot, update):
 def stop(bot, update):
     user = update.message.from_user
     logger.info("User %s canceled the conversation.", user.first_name)
-    update.message.reply_text('Bye! I hope we can talk again some day.',
+    update.message.reply_text('Bye!',
                               reply_markup=ReplyKeyboardRemove())
 
     return ConversationHandler.END
@@ -82,7 +83,7 @@ conv_handler = ConversationHandler(
     entry_points=[CommandHandler('start', start)],
 
     states={
-            MAIN: [RegexHandler('^(Ip|Meteo|Stop)$', main)],
+            MAIN: [RegexHandler('^(Ip|Temp|Stop)$', main)],
         },
 
     fallbacks=[CommandHandler('stop', stop)]
