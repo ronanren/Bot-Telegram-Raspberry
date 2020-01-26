@@ -25,8 +25,7 @@
 </code></pre>
 <p>puis cette ligne à ajouter : <code>python "chemin du Bot-telegram.py" &amp;</code></p>
 <h1 id="présentation">Présentation</h1>
-<p>Cet exemple a été fait sur l’application Telegram :</p>
-<p><img src="images/image1.jpg" alt="" width="190"> <img src="images/image2.jpg" alt="" width="190"> <img src="images/image3.jpg" alt="" width="190"> <img src="images/image4.jpg" alt="" width="190"></p>
+<p><img src="images/image1.jpg" alt="" width="190"></p>
 </div>
 </body>
 
