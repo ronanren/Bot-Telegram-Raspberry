@@ -13,6 +13,7 @@
 <ul>
 <li>Interagir avec son Raspberry Pi à distance et facilement avec l’application Telegram</li>
 <li>Obtenir des informations à travers Telegram comme l’adresse IP publique du Raspberry Pi afin d’établir des connexions (SSH, FTP, HTTPS) à distance</li>
+<li>Obtenir la température du Raspberry Pi</li>
 <li>Utilisation de python et de l’API Telegram</li>
 </ul>
 <h1 id="installation">Installation</h1>
