@@ -46,7 +46,7 @@ $ python Bot-telegram.py
 
 # Licence
 
-MIT
+<a href="https://github.com/ronanren/Bot-Telegram-Raspberry/blob/master/LICENSE" target="_blank">MIT</a>
 
 # Contactez-moi
 
